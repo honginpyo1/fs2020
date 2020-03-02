@@ -1,5 +1,5 @@
 data "ibm_is_ssh_key" "ssh1" {
-  name       = "sshkey_190826"
+  label       = "sshkey_190826"
 }
 
 resource "ibm_is_vpc" "vpc1" {
