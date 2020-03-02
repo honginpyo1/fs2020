@@ -38,11 +38,6 @@ variable "zone3_cidr" {
   description = "CIDR block to be used for zone 3"
 }
 
-variable "ssh_public_key" {
-  default = ""
-  description = "SSH Public Key contents to be used"
-}
-
 variable "image" {
   default = "r006-14140f94-fcc4-11e9-96e7-a72723715315"
   description = "OS Image ID to be used for virtual instances"
