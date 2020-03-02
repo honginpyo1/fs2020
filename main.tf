@@ -1,5 +1,6 @@
-data "ibm_is_ssh_key" "ssh1" {
-  label       = "sshkey_190826"
+resource "ibm_is_ssh_key" "ssh1" {
+  name       = "sshkey_20200302"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDawgux7227+hFO/j8I81J3QfUQI2qKCVSrvQ+z2Z2rouyAwUILknR0GNCxOg9nePSheBhlywkOJwVYHBvxFHoLDNcYJQONqYEevi/Pcoin52wmamGwLwozGpmA1O7yXRJPOovCiGHTuHNr7hKvlkOJLwIoGX9YdxirAdlpvIJ479u8hJtNebAehsRjqxrgpeGQFbksx7hLytY0GUORplR7V3RKT9VHJxeiJLypcOMqVKrOuqhxITJ/SQ9SaijnDscZRMVu5kJJzaT5mzw080imw8sGrDj1C9Sh7zV9c9Fedtc5RJEZSXu8ZRElQkZ1XDpZeviHTwlBaFSJm6A7MysEE4M7PNGAjjPUswo85mMWenI751k+1N6t+wqh6kCxkqbBLrRTjfpDLfUOYLPDrS3NwgsTuk3Ry0dVIGO2lgyfsfMjFAGZpMpMpO0lB8TVjtdzDKjbgkucP2LESfUyYiGaafCKxYzTeJQwTqEy2JnKfqKYpD2oSBlokxMVOlMT2Y7hOwdgdPovimbusJ9FABCRuAlVExRk4mzVDJAZZk5UNyYGITwS4ZO7nOOwrZ9uTBQquGWuc6V9LSROSSVAFK4pUM0ySIG31Tkvjd98hOCy9lWhLFetnxKkMvKb3DP9EuSDNLUk89oshyvSZB0hTq/iWIbouJnq37D0TIqAc4GV3w== honginpyo1@hanmail.net"
 }
 
 resource "ibm_is_vpc" "vpc1" {
@@ -61,7 +62,7 @@ resource "ibm_is_instance" "instance1" {
   }
   vpc  = "${ibm_is_vpc.vpc1.id}"
   zone = "${var.zone1}"
-  keys = ["${data.ibm_is_ssh_key.ssh1.id}"]
+  keys = ["${ibm_is_ssh_key.ssh1.id}"]
   user_data = "${data.template_cloudinit_config.cloud-init-apptier.rendered}"
 }
 
@@ -75,7 +76,7 @@ resource "ibm_is_instance" "instance2" {
   }
   vpc  = "${ibm_is_vpc.vpc1.id}"
   zone = "${var.zone2}"
-  keys = ["${data.ibm_is_ssh_key.ssh1.id}"]
+  keys = ["${ibm_is_ssh_key.ssh1.id}"]
   user_data = "${data.template_cloudinit_config.cloud-init-apptier.rendered}"
 }
 
@@ -89,7 +90,7 @@ resource "ibm_is_instance" "instance3" {
   }
   vpc  = "${ibm_is_vpc.vpc1.id}"
   zone = "${var.zone3}"
-  keys = ["${data.ibm_is_ssh_key.ssh1.id}"]
+  keys = ["${ibm_is_ssh_key.ssh1.id}"]
   user_data = "${data.template_cloudinit_config.cloud-init-apptier.rendered}"
 }
 
