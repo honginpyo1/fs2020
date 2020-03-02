@@ -1,6 +1,5 @@
-resource "ibm_is_ssh_key" "ssh1" {
-  name       = "ssh1"
-  public_key = "${var.ssh_public_key}"
+data "ibm_is_ssh_key" "ssh1" {
+  name       = "sshkey_190826a"
 }
 
 resource "ibm_is_vpc" "vpc1" {
